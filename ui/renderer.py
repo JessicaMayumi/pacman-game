@@ -113,7 +113,7 @@ class Renderer:
         text_surface = frutas_font.render(pacman_pontos, True, (255, 255, 0))
         self.screen.blit(text_surface, (self.window_size + 20, stats_y + 60))
         
-        fantasma_frutas = f"FANTASMA: {self.grid.total_frutas - self.grid.frutas_coletadas} RESTANTES"
+        fantasma_frutas = f"FRUTAS: {self.grid.total_frutas - self.grid.frutas_coletadas} RESTANTES"
         text_surface = frutas_font.render(fantasma_frutas, True, (255, 100, 100))
         self.screen.blit(text_surface, (self.window_size + 20, stats_y + 90))
         
