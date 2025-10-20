@@ -9,8 +9,8 @@ class PacMan:
         self.frutas_coletadas = 0
         
     def _spawn_aleatorio(self) -> Tuple[int, int]:
-        cantos = self.grid.get_corner_positions()
-        return random.choice(cantos)
+        area_laranja = self.grid.get_pacman_spawn_area()
+        return random.choice(area_laranja)
     
     def mover(self, nova_posicao: Tuple[int, int]) -> bool:
         if nova_posicao in self.grid.get_valid_moves(self.posicao):
@@ -26,7 +26,11 @@ class PacMan:
 class Ghost:
     def __init__(self, grid: Grid):
         self.grid = grid
-        self.posicao = grid.get_center_position()
+        self.posicao = self._spawn_aleatorio()
+    
+    def _spawn_aleatorio(self) -> Tuple[int, int]:
+        area_rosa = self.grid.get_ghost_spawn_area()
+        return random.choice(area_rosa)
         
     def mover(self, nova_posicao: Tuple[int, int]) -> bool:
         if nova_posicao in self.grid.get_valid_moves(self.posicao):
