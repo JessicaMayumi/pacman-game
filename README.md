@@ -43,3 +43,10 @@ Colete todas as frutas antes do fantasma te pegar!
 - Áreas de spawn específicas para Pac-Man e fantasma
 - Interface lateral com informações do jogo
 - Sistema de pontuação
+
+### Referências 
+- https://evolvers.com.br/desvendando-algoritmo-a/
+
+---
+
+### by Mayumi e Kevyn
