@@ -1,5 +1,5 @@
 import random
-from typing import List, Tuple, Optional
+from typing import List, Tuple
 
 class Grid:
     def __init__(self):
@@ -9,7 +9,7 @@ class Grid:
         self.frutas_coletadas = 0
         self.total_frutas = self._contar_frutas()
         
-    def _criar_layout(self) -> List[List[int]]:
+    def _criar_layout(self):
         grid = [
                     [2,2,2,2,2,2,2,2,2,2,2,2,2,2],
                     [2,0,0,0,0,0,0,0,0,0,0,0,0,2],
@@ -46,7 +46,7 @@ class Grid:
                 if grid[i][j] != 2:
                     grid[i][j] = 0
     
-    def _contar_frutas(self) -> int:
+    def _contar_frutas(self):
         count = 0
         for i in range(self.size):
             for j in range(self.size):
@@ -54,17 +54,17 @@ class Grid:
                     count += 1
         return count
     
-    def is_wall(self, pos: Tuple[int, int]) -> bool:
+    def is_wall(self, pos: Tuple[int, int]):
         x, y = pos
         if not self._posicao_valida(pos):
             return True
         return self.grid[x][y] == 2
     
-    def _posicao_valida(self, pos: Tuple[int, int]) -> bool:
+    def _posicao_valida(self, pos: Tuple[int, int]):
         x, y = pos
         return 0 <= x < self.size and 0 <= y < self.size
     
-    def get_valid_moves(self, pos: Tuple[int, int]) -> List[Tuple[int, int]]:
+    def get_valid_moves(self, pos: Tuple[int, int]):
         x, y = pos
         moves = []
         
@@ -77,7 +77,7 @@ class Grid:
                 
         return moves
     
-    def collect_fruit(self, pos: Tuple[int, int]) -> bool:
+    def collect_fruit(self, pos: Tuple[int, int]):
         x, y = pos
         if self.grid[x][y] == 1:
             self.grid[x][y] = 0
@@ -85,7 +85,7 @@ class Grid:
             return True
         return False
     
-    def is_game_over(self, pacman_pos: Tuple[int, int], ghost_pos: Tuple[int, int]) -> Tuple[bool, str]:
+    def is_game_over(self, pacman_pos: Tuple[int, int], ghost_pos: Tuple[int, int]):
         if self.frutas_coletadas >= self.total_frutas:
             return True, "vitória"
             
@@ -94,13 +94,13 @@ class Grid:
             
         return False, ""
     
-    def get_corner_positions(self) -> List[Tuple[int, int]]:
+    def get_corner_positions(self):
         return [(2, 2), (2, 9), (9, 2), (9, 9)]
     
     def get_center_position(self) -> Tuple[int, int]:
         return (5, 5)
     
-    def get_pacman_spawn_area(self) -> List[Tuple[int, int]]:
+    def get_pacman_spawn_area(self):
         area = []
         for i in range(8, 9):
             for j in range(6, 8):
@@ -108,7 +108,7 @@ class Grid:
                     area.append((i, j))
         return area
     
-    def get_ghost_spawn_area(self) -> List[Tuple[int, int]]:
+    def get_ghost_spawn_area(self):
         area = []
         for i in range(4, 6):
             for j in range(6, 8):
@@ -119,5 +119,5 @@ class Grid:
     def alternar_turno(self):
         self.turno_pacman = not self.turno_pacman
     
-    def get_grid_state(self) -> List[List[int]]:
+    def get_grid_state(self):
         return [row[:] for row in self.grid]

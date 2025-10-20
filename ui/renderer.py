@@ -170,8 +170,7 @@ class Renderer:
         
         pygame.display.flip()
         
-    def animar_movimento(self, pos_antiga: Tuple[int, int], pos_nova: Tuple[int, int], 
-                        cor: Tuple[int, int, int], duracao: float = 0.1):
+    def animar_movimento(self, pos_antiga: Tuple[int, int], pos_nova: Tuple[int, int], cor: Tuple[int, int, int], duracao: float = 0.1):
         frames = 5
         delay = duracao / frames
         
